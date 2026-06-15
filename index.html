@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Töltsd le az e-bookodat — PowerSynergy Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2e;
+    --navy-mid: #112240;
+    --navy-light: #1a2f4a;
+    --navy-border: rgba(201,168,76,0.18);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.45);
+    --cream: #f5f0e8;
+    --cream-dim: rgba(245,240,232,0.65);
+    --text-muted: rgba(245,240,232,0.55);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(13,27,46,0.9) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .gold-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+    opacity: 0.7;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 7vw, 72px);
+    font-weight: 600;
+    line-height: 1.08;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 2vw, 17px);
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.75;
+    margin: 20px auto 0;
+    font-weight: 300;
+  }
+
+  /* ── DOWNLOAD SECTION ── */
+  .download-section {
+    padding: 0 24px 100px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .lang-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--navy-border);
+    padding: 36px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lang-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .lang-card:hover {
+    border-color: var(--gold-dim);
+    transform: translateY(-4px);
+  }
+
+  .lang-card:hover::after {
+    opacity: 1;
+  }
+
+  .flag {
+    font-size: 36px;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .lang-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .lang-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-download:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .btn-download svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold-dim), transparent);
+    margin: 0 auto 60px;
+  }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    text-align: center;
+    padding: 0 24px 60px;
+  }
+
+  .footer-note p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 20px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--gold-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .cards {
+      grid-template-columns: 1fr;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .hero-title { font-size: 38px; }
+  }
+
+  @media (max-width: 480px) {
+    .lang-card { padding: 28px 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="gold-line"></div>
+  <p class="eyebrow">PowerSynergy Team &mdash; Ingyenes útmutató</p>
+  <h1 class="hero-title">A te utad a<br><em>pénzügyi szabadsághoz</em></h1>
+  <p class="hero-sub">Töltsd le az e-bookot a számodra elérhető nyelven — és tedd meg az első lépést egy tudatos döntés felé.</p>
+  <p class="hero-sub" style="margin-top:8px">Lade das E-Book in deiner Sprache herunter — und mach den ersten Schritt in Richtung finanzielle Freiheit.</p>
+  <p class="hero-sub" style="margin-top:8px">Скачай книгу на своём языке — и сделай первый шаг к финансовой свободе.</p>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download-section">
+  <p class="section-label">Válaszd ki a nyelvedet</p>
+
+  <div class="cards">
+
+    <!-- Magyar -->
+    <div class="lang-card">
+      <div class="flag">🇭🇺</div>
+      <div class="lang-name">Magyar</div>
+      <p class="lang-desc">Az eredeti magyar kiadás — Kabók Éva személyes történetével és a pénzügyi szabadság útitervével.</p>
+      <a href="https://evakabok67-del.github.io/evakabok-ebook/ebook_v2.pdf" download class="btn-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Letöltés
+      </a>
+    </div>
+
+    <!-- Német -->
+    <div class="lang-card">
+      <div class="flag">🇩🇪</div>
+      <div class="lang-name">Deutsch</div>
+      <p class="lang-desc">Die deutsche Ausgabe — mit Évas persönlicher Geschichte und dem Fahrplan zur finanziellen Freiheit.</p>
+      <a href="https://evakabok67-del.github.io/evakabok-ebook/ebook_de.pdf" download class="btn-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Herunterladen
+      </a>
+    </div>
+
+    <!-- Orosz -->
+    <div class="lang-card">
+      <div class="flag">🇷🇺</div>
+      <div class="lang-name">Русский</div>
+      <p class="lang-desc">Русское издание — личная история Евы и путь к финансовой свободе.</p>
+      <a href="https://evakabok67-del.github.io/evakabok-ebook/ebook_ru.pdf" download class="btn-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Скачать
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="divider"></div>
+<div class="footer-note">
+  <p>Az e-book ingyenes és azonnal letölthető. Nem szükséges regisztráció.</p>
+  <div class="footer-brand">PowerSynergy Team &mdash; Kabók Éva</div>
+</div>
+
+</body>
+</html>
